@@ -1,0 +1,25 @@
+{
+  "name": "web_project_around_express",
+  "version": "1.0.0",
+  "description": "proyecto 15 ",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ./app.js"
+  },
+  "author": "felipe vivas",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "eslint-plugin-import": "^2.31.0",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}

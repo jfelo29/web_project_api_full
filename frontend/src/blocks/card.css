@@ -1,0 +1,87 @@
+.card__area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  gap: 17px;
+  padding-top: 50px;
+  max-width: 880px;
+  padding: 0;
+}
+.card {
+  position: relative;
+  width: 282px;
+  height: 361px;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.card__delate-icon {
+  background-image: url(../images/dalatebutton.svg);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.card__menu {
+  width: 100%;
+  padding: 25px 15px 31px 21px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__title {
+  max-width: 205px;
+  min-width: 205px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: black;
+  margin: 0;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+}
+.card__like {
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/megusta.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  margin: 0;
+}
+
+.card__like-icon_active {
+  background-image: url(../images/likeblack.png);
+}
+
+
+@media screen and (max-width: 880px) {
+  .card__area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    margin-left: 200px;
+    gap: 17px;
+    padding-top: 50px;
+    max-width: 880px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  
+}

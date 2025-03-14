@@ -1,0 +1,17 @@
+.body {
+  margin: 0;
+  
+
+}
+
+.page {
+  background-color: #000000;
+  color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@media screen and (max-widht: 320px) {
+}
