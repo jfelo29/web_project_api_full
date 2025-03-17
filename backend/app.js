@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
-const authRouter = require('./routes/auth');
+
+// const signin = require('./controllers/signin');
+// const users = require('./routes/users');
 
 const app = express();
 const PORT = 3000;
@@ -13,22 +15,23 @@ mongoose.connect('mongodb://localhost:27017/aroundb').then(() => {
 }).catch((error) => {
   console.error('Error al conectar a MongoDB:', error);
 });
-app.use((req, res, next) => {
-  req.user = {
-    _id: '67983a184b9b71856c998a47', // pega el _id del usuario de prueba que creamos en el paso anterior
-  };
 
-  next();
-});
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
-app.use('/', authRouter);
-
+// app.use('/singin', signin);
+// app.use('/signup', users.createUser);
+app.use((req, res) => {
+  res.status(404).send({ message: 'Recurso solicitado no encontrado' });
+});
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
 });
+/* comente linea 6, 7, 21 y 22 para desactivar porque me
+arrojaba error  Router.use() requires a middleware function but got a undefined
+una vez las comento, se soluciona el errror, pero igual necesito esas lineas para crear las rutas
+que pide el proyecto
 
-app.get('/', (req, res) => {
-  res.status(404).send({ message: 'Recurso solicitado no encontrado' });
-});
+no logro poder intalar en signin const jwt = require('jsonwebtoken'); elimine node y se volvio
+a intaar y no fuinciono y tambien el package.json
+*/
 

@@ -30,31 +30,6 @@ const deleteCard = async (req, res) => {
   }
 };
 
-/* const deleteCard = async (req, res) => {
-  try {
-    const card = await Card.findByIdAndRemove(req.params.cardId, {
-      isCreated: false,
-    }, { new: true }).orFail();
-
-
-    return res.status(200).send({ message: 'tarjeta eliminada', card });
-  } catch (error) {
-    return res.status(500).send({ message: 'Error al al eliminar el tarjeta' });
-  }
-};
-*/
-
-/* const deleteCard = async (req, res) => {
-    try {
-      const card = await Card.findById(req.params.cardId).orFail();
-
-      await card.remove();
-      return res.status(204).send({ message: 'Tarjeta eliminada' });
-    } catch (error) {
-      return res.status(500).send({ message: 'Error al eliminar la tarjeta' });
-    }
-  }; */
-
 const likeCard = async (req, res) => {
   try {
     console.log(req.params.cardId);
@@ -69,9 +44,6 @@ const likeCard = async (req, res) => {
     if (cardLike.likes.includes(req.user._id)) {
       return res.status(200).send({ message: 'like ya existe', cardLike });
     }
-
-
-    // return res.status(204).send({ message: 'like agregado', card });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ message: 'error al querer poner like' });
