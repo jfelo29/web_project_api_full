@@ -1,7 +1,7 @@
-# Tripleten web_project_around_express
-usamos mongoose y express, organizamos todo para tener los likes, el deleete  y que funcionen con la api. 
-tenemos las rutas, models, routes. 
+# Tripleten web_project_api_full
+hicimos el proceso de agregado de contraseña y email 
+actualizar el controlador de create user
+crear controlador de signin
+crear rutas para signin y signup
+crear el middleware de auth
 
-
-segunda fase.
-implementacion de registro y login

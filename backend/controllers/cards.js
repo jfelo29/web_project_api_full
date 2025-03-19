@@ -8,6 +8,16 @@ const getAllCards = async (req, res) => {
     res.status(500).send({ message: 'Error al obtener las tarjetas' });
   }
 };
+const getCardById = async (req, res) => {
+  try {
+    const card = await Card.findById(req.params.cardId)
+      .populate('owner')
+      .orFail(new error('tarjeta no encontrada'));
+    res.json(card);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener la tarjeta' });
+  }
+};
 
 const createCard = async (req, res) => {
   try {
@@ -21,15 +31,17 @@ const createCard = async (req, res) => {
 };
 
 const deleteCard = async (req, res) => {
-  try {
-    // const deleteCard = await Card.findByIdAndDelete(req.params.cardId);
-    const deleteCard = await Card.findByIdAndDelete(req.params.cardId).orFail(() => res.status(400).send({ message: 'tarjeta eliminada' })).then((card) => res.status(200).send({ message: 'tarjeta eliminada', card }));
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send({ message: 'Error al eliminar la tarjeta' });
-  }
+  await Card.findById(req.params.cardId)
+    .then((card) => {
+      if (!card.owner.equals(req.user._id)) {
+        return res.status(403).send({ message: 'No autorizado' });
+      }
+      return card.findByIdAndDelete(req.params.cardId);
+    })
+    .then(() => {
+      res.status(200).send({ message: 'tarjeta eliminada' });
+    });
 };
-
 const likeCard = async (req, res) => {
   try {
     console.log(req.params.cardId);
@@ -69,4 +81,4 @@ const deleteCardLikes = async (req, res) => {
 
 
 
-module.exports = { getAllCards, createCard, deleteCard, deleteCardLikes, likeCard };
+module.exports = { getAllCards, createCard, deleteCard, deleteCardLikes, likeCard, getCardById };

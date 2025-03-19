@@ -13,8 +13,8 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    console.log(req.params.id);
+    const user = await User.findById(req.user._id);
+
     if (!user) {
       return res.status(404).send({ message: 'Usuario no encontrado' });
     }

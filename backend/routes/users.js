@@ -4,6 +4,7 @@ const router = require('express').Router();
 const { getAllUsers, getUserById, createUser } = require('../controllers/users');
 
 const User = require('../models/users');
+const auth = require('../middlewares/auth');
 
 router.get('/users', getAllUsers);
 
@@ -42,6 +43,8 @@ router.patch('/users/me/avatar', async (req, res) => {
     return res.status(500).send({ message: 'Error al actualizar el avatar' });
   }
 });
+router.get('/users/me', auth.auth, getUserById);
+
 module.exports = router;
 
 
