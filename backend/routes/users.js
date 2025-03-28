@@ -1,16 +1,28 @@
 
 const router = require('express').Router();
-
+const { celebrate, Joi } = require('celebrate');
+const validator = require('validator');
 const { getAllUsers, getUserById, createUser } = require('../controllers/users');
-
 const User = require('../models/users');
 const auth = require('../middlewares/auth');
 
+const validateURL = (value, helpers) => {
+  if (validator.isURL(value)) {
+    return value;
+  }
+  return helpers.error('string.uri');
+}
 router.get('/users', getAllUsers);
 
 router.get('/users/:id', getUserById);
 
-router.post('/users', createUser);
+router.post('/users', celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).max(200).required(),
+    avatar: Joi.string().required().custom(validateURL),
+  }),
+}), createUser);
 router.patch('/users/me', async (req, res) => {
   try {
     const { name, about, avatar } = req.body;
@@ -44,6 +56,7 @@ router.patch('/users/me/avatar', async (req, res) => {
   }
 });
 router.get('/users/me', auth.auth, getUserById);
+
 
 module.exports = router;
 

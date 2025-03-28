@@ -18,10 +18,16 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "celebrate": "^15.0.3",
+    "curl": "^0.1.4",
     "eslint-plugin-import": "^2.31.0",
     "express": "^4.21.2",
+    "express-winston": "^4.2.0",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
-    "validator": "^13.9.0"
+    "nodejs": "^0.0.0",
+    "validator": "^13.9.0",
+    "winston": "^3.17.0"
   }
 }

@@ -16,15 +16,17 @@ const usersSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: 'enlace',
-    /* validate: {
-      alidator: function (v) {
-        return /^(https?:\/\/(?:www\.)?[a-zA-Z0-9._~:/?%#[\]@!$&'()*+,;=]+#?)$/.test(v);
+    default:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/resources/moved_avatar_1604080799.jpg',
+    validate: {
+      validator(value) {
+        return urlRegex.test(value);
       },
-      message: props => `${props.value} no es un enlace válido!`
-    } */
-
+      message:
+        '⚠️ La URL del avatar no es válida. Asegúrate de que comience con http:// o https://',
+    },
   },
+
   email: {
     type: String,
     requiered: true,
@@ -45,8 +47,7 @@ const usersSchema = new mongoose.Schema({
     select: false,
 
   },
-}
-);
+});
 const User = mongoose.model('user', usersSchema);
 module.exports = User;
 

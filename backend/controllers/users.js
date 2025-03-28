@@ -32,7 +32,8 @@ const createUser = async (req, res) => {
     const { name, about, avatar, email, password } = req.body;
     bycrypt.hash(password, 10)
       .then((hash) => {
-        const user = new User({ name, about, avatar, email, password: hash });
+        const user = new User(
+          { name, about, avatar, email, password: hash });
         return user;
       })
       .then(async (newUser) => {
@@ -45,7 +46,7 @@ const createUser = async (req, res) => {
   } catch (error) {
     return res.status(500).send({ message: 'Error al obtener el usuario' });
   }
-}
+};
 
 
 
