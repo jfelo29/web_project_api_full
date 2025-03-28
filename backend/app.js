@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
@@ -11,6 +12,8 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 const PORT = 3001;
+app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/aroundb').then(() => {
