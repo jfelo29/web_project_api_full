@@ -71,20 +71,11 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-    //getUserInfo();
+
 
   }, [isLoggedIn]);
   console.log(currentUser);
-  /*function getUserInfo() {
-    
-      .getUserInfo(jwt)
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }*/
+
   function handleOpenPopupNewCard() {
     setPopup(newCardPopup);
   }
