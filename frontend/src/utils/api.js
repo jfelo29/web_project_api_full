@@ -4,6 +4,7 @@ class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
+
   getUserInfo = () => {
     return fetch(this.baseUrl + "/users/me", {
       method: "GET",
@@ -92,10 +93,12 @@ class Api {
     });
   }
 }
-const baseUrl = "https://around-api.es.tripleten-services.com/v1";
+const baseUrl = "https://api.felipeproyects.crabdance.com";
 const headers = {
   "Content-Type": "application/json",
   authorization: "cd55be07-1650-4110-8dca-83b71e15bea1",
 };
 const api = new Api(baseUrl, headers);
 export default api;
+
+

@@ -1,1 +1,1 @@
-export const baseUrl = " https://se-register-api.en.tripleten-services.com/v1"
+export const baseUrl = " https://api.felipeproyects.crabdance.com"
