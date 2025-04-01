@@ -202,13 +202,3 @@ function App() {
 
 export default App;
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JiYjM2NWFkMzkzMDRhZjI4NjkzNGQiLCJpYXQiOjE3NDAzNTQ0NTQsImV4cCI6MTc0MDk1OTI1NH0.eGpAjLITAIEUA1AfirfTp7zQ-oyje3q3fEYR1sOUJXQ"
-/* email
-:
-"juan@correo.com"
-password
-:
-"123234" */
-// cuando no tenga token tendria que hacer redirigirme a login 
-// TENGO QUE HACER NULL QUE PASE LAS TARJETAS SI NO ESTA INCIADA LA SESION
-// igual el nombre de usuario 
