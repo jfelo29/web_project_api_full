@@ -11,7 +11,7 @@ class Api {
       method: "GET",
       headers: {
         ...this.headers,
-        authorization : getToken()
+        authorization: getToken()
       },
     }).then((response) => {
       if (response.ok) return response.json();
@@ -35,7 +35,7 @@ class Api {
       method: "PATCH",
       headers: {
         ...this.headers,
-        authorization : getToken()
+        authorization: getToken()
       },
       body: JSON.stringify(data),
     }).then((response) => {
@@ -47,9 +47,9 @@ class Api {
   createcard(data) {
     return fetch(this.baseUrl + "/cards", {
       method: "POST",
-      headers : {
+      headers: {
         ...this.headers,
-        authorization : getToken()
+        authorization: getToken()
       },
       body: JSON.stringify(data),
     }).then((response) => {
@@ -61,9 +61,9 @@ class Api {
   delateCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers : {
-       ...this.headers,
-        authorization : getToken()
+      headers: {
+        ...this.headers,
+        authorization: getToken()
       },
     }).then((response) => {
       if (response.ok) return response.json();
@@ -76,9 +76,9 @@ class Api {
     console.log(this.headers);
     return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
-      headers : {
+      headers: {
         ...this.headers,
-        authorization : getToken()
+        authorization: getToken()
       },
     }).then((response) => {
       if (response.ok) return response.json();
@@ -89,9 +89,9 @@ class Api {
   dislikeCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
-      headers : {
-       ...this.headers,
-        authorization : getToken() 
+      headers: {
+        ...this.headers,
+        authorization: getToken()
       }
     }).then((response) => {
       if (response.ok) return response.json();
@@ -105,7 +105,7 @@ class Api {
       method: "PATCH",
       headers: {
         ...this.headers,
-        authorization : getToken() 
+        authorization: getToken()
       },
       body: JSON.stringify(image),
     }).then((response) => {
@@ -116,7 +116,7 @@ class Api {
   }
 }
 //const baseUrl = "https://api.felipeproyects.crabdance.com";
-const baseUrl = "http://localhost:3001"
+const baseUrl = "https://felipeproyects.crabdance.com/"
 const headers = {
   "Content-Type": "application/json",
   authorization: "cd55be07-1650-4110-8dca-83b71e15bea1",
