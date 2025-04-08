@@ -62,7 +62,7 @@ function App() {
     api.getUserInfo().then((otraData) => {
       GetInfo().then((data) => {
         setIsLoggedIn(true);
-        setCurrentUser({ ...otraData, email: data.data.email })
+        setCurrentUser({ ...otraData, email: data.email })
         navigate('/');
       })
     })
@@ -146,7 +146,7 @@ function App() {
   }
   async function handleSignup(data) {
     signup(data).then((newData) => {
-      setCurrentUser(newData);
+      //setCurrentUser(newData);
       handleClosePopup();
       navigate('/login');
       setIsRegistrationSuccess(true);

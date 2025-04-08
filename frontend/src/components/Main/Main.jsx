@@ -18,7 +18,8 @@ export default function Main(props) {
       });
   }, []);
   async function handleCardLike(card) {
-    const isLiked = card.isLiked;
+    //const isLiked = card.isLiked;
+    const isLiked = card.likes ? card.likes.length > 0 : false;
     if (isLiked) {
       await api
         .dislikeCard(card._id)

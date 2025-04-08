@@ -47,9 +47,5 @@ const createUser = async (req, res) => {
     return res.status(500).send({ message: 'Error al obtener el usuario' });
   }
 };
-
-
-
-
 module.exports = { getAllUsers, getUserById, createUser };
 

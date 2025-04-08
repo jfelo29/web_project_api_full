@@ -15,7 +15,7 @@ const GetInfo = async () => {
     const response = await fetch(`${baseUrl}/users/me`, {
         headers: {
             //'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Authorization': `Bearer ${getToken()}`,
+            'Authorization': `${getToken()}`,
         },
     });
     const data = await response.json();

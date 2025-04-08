@@ -16,7 +16,7 @@ app.use(cors());
 app.options('*', cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/aroundb').then(() => {
+mongoose.connect('mongodb://127.0.0.1:27017/aroundbfelipe2').then(() => {
   console.log('Conectado a MongoDB');
 }).catch((error) => {
   console.error('Error al conectar a MongoDB:', error);
@@ -25,7 +25,7 @@ app.use('/auth', auth.auth);
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
 app.use(requestLogger);
-app.use('/singin', signin.signin);
+app.use('/signin', signin.signin);
 app.use('/signup', users.createUser);
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
@@ -39,4 +39,3 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
 });
-

@@ -1,11 +1,11 @@
 export default function Card(props) {
   const { name, link } = props.card;
-  const isLiked = props.card.isLiked;
+  //const isLiked = props.card.isLiked;
+  const isLiked = props.card.likes ? props.card.likes.length > 0 : false;
   const onCardDelete = props.card.onCardDelete;
 
-  const cardLikeButtonClassName = `card__like ${
-    isLiked ? "card__like-icon_active" : ""
-  }`;
+  const cardLikeButtonClassName = `card__like ${isLiked ? "card__like-icon_active" : ""
+    }`;
 
   function handleLikeClick() {
     props.onCardLike();

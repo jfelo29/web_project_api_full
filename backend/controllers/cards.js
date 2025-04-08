@@ -21,8 +21,8 @@ const getCardById = async (req, res) => {
 
 const createCard = async (req, res) => {
   try {
-    const { name, link, owner, likes, createdAt } = req.body;
-    const card = new Card({ name, link, owner, likes, createdAt });
+    const { name, link } = req.body;
+    const card = new Card({ name, link, owner: req.user._id });
     await card.save();
     res.status(201).send(card);
   } catch (error) {
@@ -31,12 +31,13 @@ const createCard = async (req, res) => {
 };
 
 const deleteCard = async (req, res) => {
+  console.log("🚀 ~ deleteCard ~ req.params.cardId:", req.params.cardId);
   await Card.findById(req.params.cardId)
     .then((card) => {
       if (!card.owner.equals(req.user._id)) {
         return res.status(403).send({ message: 'No autorizado' });
       }
-      return card.findByIdAndDelete(req.params.cardId);
+      return Card.findByIdAndDelete(req.params.cardId);
     })
     .then(() => {
       res.status(200).send({ message: 'tarjeta eliminada' });
@@ -77,8 +78,4 @@ const deleteCardLikes = async (req, res) => {
     return res.status(500).send({ message: 'Error al al eliminar el like' });
   }
 };
-
-
-
-
 module.exports = { getAllCards, createCard, deleteCard, deleteCardLikes, likeCard, getCardById };

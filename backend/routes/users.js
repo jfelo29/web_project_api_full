@@ -11,8 +11,10 @@ const validateURL = (value, helpers) => {
     return value;
   }
   return helpers.error('string.uri');
-}
+};
 router.get('/users', getAllUsers);
+
+router.get('/users/me', auth.auth, getUserById);
 
 router.get('/users/:id', getUserById);
 
@@ -23,7 +25,7 @@ router.post('/users', celebrate({
     avatar: Joi.string().required().custom(validateURL),
   }),
 }), createUser);
-router.patch('/users/me', async (req, res) => {
+router.patch('/users/me', auth.auth, async (req, res) => {
   try {
     const { name, about, avatar } = req.body;
     const user = await User.findById(req.user._id);
@@ -55,9 +57,4 @@ router.patch('/users/me/avatar', async (req, res) => {
     return res.status(500).send({ message: 'Error al actualizar el avatar' });
   }
 });
-router.get('/users/me', auth.auth, getUserById);
-
-
 module.exports = router;
-
-
